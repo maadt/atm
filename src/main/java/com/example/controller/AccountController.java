@@ -38,9 +38,15 @@ public class AccountController {
     	return this.accountService.getAmount(accountId);
     }
     
-    //課題３
+    // 課題３
     @PostMapping("/deposit/{account_id}")
     public ResponseAmount deposit(@PathVariable("account_id") Integer accountId, @RequestBody RequestAmount requestAmount) {
         return this.accountService.deposit(accountId, requestAmount);
+    }
+    
+    // 課題４
+    @PostMapping("/withdraw/{account_id}")
+    public ResponseAmount withdraw(@PathVariable("account_id") Integer accountId, @RequestBody RequestAmount requestAmount) {
+        return this.accountService.withdraw(accountId, requestAmount);
     }
 }

@@ -44,4 +44,19 @@ public class AccountService {
         this.accountRepository.save(account);
         return responseAmount;
     }
+    
+    // 課題４
+    public ResponseAmount  withdraw(Integer accountId, RequestAmount requestAmount) {
+        Account account = this.accountRepository.findById(accountId).get();
+        Integer amount = account.getAmount() - requestAmount.getAmount();
+        if (amount < 0) {
+        	throw new IllegalArgumentException("残高不足です");
+        } else {
+        	ResponseAmount responseAmount = new ResponseAmount();
+            responseAmount.setAmount(amount);
+            account.setAmount(amount);
+            this.accountRepository.save(account);
+            return responseAmount;
+        }
+    }
 }
