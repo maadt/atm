@@ -33,4 +33,15 @@ public class AccountService {
         responseAmount.setAmount(account.getAmount());
         return responseAmount;
     }
+    
+    // 課題３
+    public ResponseAmount deposit(Integer accountId, RequestAmount requestAmount) {
+        Account account = this.accountRepository.findById(accountId).get();
+        Integer amount = account.getAmount() + requestAmount.getAmount();
+        ResponseAmount responseAmount = new ResponseAmount();
+        responseAmount.setAmount(amount);
+        account.setAmount(amount);
+        this.accountRepository.save(account);
+        return responseAmount;
+    }
 }

@@ -37,4 +37,10 @@ public class AccountController {
     // @PathVariable：「bankTrading/{account_id}」に対してGETマッピングをするため
     	return this.accountService.getAmount(accountId);
     }
+    
+    //課題３
+    @PostMapping("/deposit/{account_id}")
+    public ResponseAmount deposit(@PathVariable("account_id") Integer accountId, @RequestBody RequestAmount requestAmount) {
+        return this.accountService.deposit(accountId, requestAmount);
+    }
 }
