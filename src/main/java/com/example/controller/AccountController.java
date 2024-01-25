@@ -32,7 +32,7 @@ public class AccountController {
     }
     
     // 課題２
-    @GetMapping("/account_id")
+    @GetMapping("/{account_id}")
     public ResponseAmount getAmount(@PathVariable("account_id") Integer accountId) {
     // @PathVariable：「bankTrading/{account_id}」に対してGETマッピングをするため
     	return this.accountService.getAmount(accountId);
