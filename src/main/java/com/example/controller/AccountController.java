@@ -24,7 +24,7 @@ public class AccountController {
     // 課題１
     @PostMapping("/open")
     public Account open(@RequestBody RequestAmount requestAmount) {
-        return this.accountService.insert(requestAmount);
-        // 登録結果を返却
+    // @RequestBody：HTTPリクエストのボディをJavaオブジェクトに自動的にマッピングする
+        return this.accountService.open(requestAmount);
     }
 }
