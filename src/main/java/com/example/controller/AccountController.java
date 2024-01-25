@@ -2,6 +2,7 @@ package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +32,9 @@ public class AccountController {
     }
     
     // 課題２
-    @GetMapping
-    public ResponseAmount getAmount(@RequestBody Integer accountId) {
+    @GetMapping("/account_id")
+    public ResponseAmount getAmount(@PathVariable("account_id") Integer accountId) {
+    // @PathVariable：「bankTrading/{account_id}」に対してGETマッピングをするため
     	return this.accountService.getAmount(accountId);
     }
 }

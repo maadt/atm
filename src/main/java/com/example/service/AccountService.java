@@ -1,7 +1,5 @@
 package com.example.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,8 +27,10 @@ public class AccountService {
     
     // 課題２
     public ResponseAmount getAmount(Integer accountId) {
-        Optional<Account> account = this.accountRepository.findById(accountId);
-        ResponseAmount responseAmount = new ResponseAmount(account.getAmount());
+        Account account = this.accountRepository.findById(accountId).get();
+        //findByIdで取得してきたデータはOptional<Account>型なので.get()で変換する
+        ResponseAmount responseAmount = new ResponseAmount();
+        responseAmount.setAmount(account.getAmount());
         return responseAmount;
     }
 }
